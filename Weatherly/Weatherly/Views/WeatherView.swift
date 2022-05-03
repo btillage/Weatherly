@@ -50,6 +50,11 @@ struct WeatherView: View {
                             Spacer()
                             WeatherRow(logo: "humidity", name: "Humidity", value: String(weather.main.humidity) + "%")
                         }
+                        HStack {
+                            WeatherRow(logo: "cloud", name: "Cloudiness", value: String(weather.clouds.all) + "%")
+                            Spacer()
+                            WeatherRow(logo: "eyeglasses", name: "Visibility", value: String(weather.visibility / 100) + "%")
+                        }
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
