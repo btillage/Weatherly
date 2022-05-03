@@ -25,7 +25,7 @@ struct WeatherView: View {
                     }
                     .padding(.trailing, 80.0)
                     VStack {
-                        Image(systemName: "cloud")
+                        Image(systemName: weatherSymbol(weather: weather))
                             .font(.system(size: 60))
                         
                         Text(weather.weather[0].main)
@@ -84,6 +84,29 @@ struct WeatherView: View {
         .preferredColorScheme(.dark)
 
     }
+}
+
+func weatherSymbol(weather: ResponseBody) -> String {
+     
+    if weather.weather[0].main == "Thunderstorm" {
+        return "cloud.bolt"
+    }
+    if weather.weather[0].main == "Drizzle"{
+        return "cloud.drizzle"
+    }
+    if weather.weather[0].main == "Rain"{
+        return "cloud.rain"
+    }
+    if weather.weather[0].main == "Snow"{
+        return "cloud.snow"
+    }
+    if weather.weather[0].main == "Clear"   {
+        return "sun.min"
+    }
+    if weather.weather[0].main == "Clouds"{
+        return "cloud"
+    }
+    return ""
 }
 
 struct WeatherView_Previews: PreviewProvider {
